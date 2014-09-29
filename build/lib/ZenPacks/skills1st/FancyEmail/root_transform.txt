@@ -1,0 +1,33 @@
+sevDict = {0 : "Clear", 1: "Debug", 2 : "Info", 3 : "Warning", 4 : "Error", 5 : "Critical"}
+evt.SevString = sevDict[evt.severity]
+
+sevColourDict = {0: "Green", 1: "DarkGray", 2: "Blue", 3: "Yellow", 4: "Orange", 5: "Red"}
+evt.sevColour = sevColourDict[evt.severity]
+
+import time
+evt.utcTime = time.asctime( time.gmtime(time.time()) )
+
+evt.Site = "Unknown"
+if  evt.Location:
+    evt.Site = evt.Location[1:]
+
+#Categorize event by event class or component 
+
+evt.Category = "Unknown"
+
+# Need to check that it has a class - may be an UNKNOWN mapping ....
+if evt.eventClass:
+    eventClass = "/" + evt.eventClass.split('/')[1]   # get first part of event class
+    infraList=[ '/vSphere', '/UCS', '/JcTest' ]
+    if eventClass in infraList:
+        evt.Category = "Infrastructure"
+    elif eventClass in ('/DB'):
+        evt.Category = "Database"
+    else:
+         evt.Category = evt.eventClass
+
+if not hasattr(evt, "explanation"):
+    evt.explanation = 'N/A'
+
+if not hasattr(evt, "resolution"):
+    evt. resolution = 'N/A'

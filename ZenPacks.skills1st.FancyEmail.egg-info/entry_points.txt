@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.skills1st.FancyEmail = ZenPacks.skills1st.FancyEmail
+
