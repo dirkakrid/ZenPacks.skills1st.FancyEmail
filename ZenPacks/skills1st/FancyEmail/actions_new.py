@@ -98,7 +98,7 @@ class IFancyEmailActionContentInfo(IInfo):
         description = _t(u'The template for the body for CLEAR emails.'),
         default     = textwrap.dedent(text = u'''
         <br><img src="cid:image0"><br>
-        <b><u> <span style="text-transform: uppercase;  background-color: LimeGreen; color: ${evt/sevColour}; font-size: 200%; font-family: sans-serif"> Cleared ${evt/SevString} Severity Incident at  ${evt/Site} &nbsp&nbsp Category: ${evt/Category}</span></u> </b>
+        <b><u> <span style="text-transform: uppercase;  background-color: LimeGreen; color: ${evt/sevColor} ; font-size: 200%; font-family: sans-serif"> Cleared ${evt/SevString} Severity Incident at  ${evt/Site} &nbsp&nbsp Category: ${evt/Category}</span></u> </b>
 
         Device: <b> <font size="4" color="Blue"><span style="text-transform: uppercase"> ${evt/device}</span></font> </b>&nbsp&nbsp IP Address:<b> <font size="4" color="Blue"> ${evt/ipAddress} </font> </b>&nbsp&nbsp Time:  <b> <font size="4" color="Blue">${evt/utcTime} (UTC)</font> </b> 
 
