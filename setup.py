@@ -3,13 +3,13 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.skills1st.FancyEmail"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 AUTHOR = "Jane Curry - jane.curry@skills-1st.co.uk"
 LICENSE = "GPLv2"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.skills1st']
 PACKAGES = ['ZenPacks', 'ZenPacks.skills1st', 'ZenPacks.skills1st.FancyEmail']
 INSTALL_REQUIRES = []
-COMPAT_ZENOSS_VERS = ""
+COMPAT_ZENOSS_VERS = ">=4.0"
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
 ################################

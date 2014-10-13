@@ -68,7 +68,8 @@ different column header to sort on and the events will reappear.
 NOTE that these fields are not available for creating triggers - this is due to a bug
 ticketed as ZEN-8391.
 
-After creating new event fields, restart zenhub and zopectl daemons and refresh browser window.
+After creating new event fields, you will need to install / reinstall the ZenPack,
+restart zenhub, zopectl and zenactiond daemons and refresh the browser window.
 
 In the actions.json file, where do you find the names of the legal fields that you need?
 

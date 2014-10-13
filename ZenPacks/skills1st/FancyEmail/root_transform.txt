@@ -1,33 +1,53 @@
+##############################################
+# Code to help create FancyEmail notifications
+##############################################
+
 sevDict = {0 : "Clear", 1: "Debug", 2 : "Info", 3 : "Warning", 4 : "Error", 5 : "Critical"}
 evt.SevString = sevDict[evt.severity]
 
-sevColourDict = {0: "Green", 1: "DarkGray", 2: "Blue", 3: "Yellow", 4: "Orange", 5: "Red"}
-evt.sevColour = sevColourDict[evt.severity]
+# Get good combinations of foreground text on severity-colour background
 
+sevBackgroundColourDict = {0: "LimeGreen", 1: "DarkGray", 2: "DeepSkyBlue", 3: "Yellow", 4: "Orange", 5: "Red"}
+sevColourDict = {0: "Black", 1: "White", 2: "Black", 3: "Black", 4: "Black", 5: "White"}
+evt.sevColour = sevColourDict[evt.severity]
+evt.sevBackgroundColour = sevBackgroundColourDict[evt.severity]
+
+# To add UCT time field to event
 import time
 evt.utcTime = time.asctime( time.gmtime(time.time()) )
 
+# create lists for each region that include the appropriate Location
+ukRegion = ['Taplow', 'PCI']
+euRegion = ['Denmark']
+eaRegion = ['Kandersteg']
+
 evt.Site = "Unknown"
+evt.Region = 'Unknown'
 if  evt.Location:
     evt.Site = evt.Location[1:]
-
-#Categorize event by event class or component 
-
+    if evt.Site in ukRegion:
+        evt.Region = 'UK'
+    elif evt.Site in euRegion:
+        evt.Region = 'EU'
+    elif evt.Site in eaRegion:
+        evt.Region = 'EA'
+           
+# We are using a custom property on a device to set Category
+# This is then used to fufil the evt.Category attribute
 evt.Category = "Unknown"
+try:
+    if device.cCategory:
+        evt.Category = device.cCategory
+except:
+    pass
 
-# Need to check that it has a class - may be an UNKNOWN mapping ....
-if evt.eventClass:
-    eventClass = "/" + evt.eventClass.split('/')[1]   # get first part of event class
-    infraList=[ '/vSphere', '/UCS', '/JcTest' ]
-    if eventClass in infraList:
-        evt.Category = "Infrastructure"
-    elif eventClass in ('/DB'):
-        evt.Category = "Database"
-    else:
-         evt.Category = evt.eventClass
-
+# Ensure that explanation and resolution fields arenot null
+# They can be the null string but must not be null
 if not hasattr(evt, "explanation"):
     evt.explanation = 'N/A'
 
 if not hasattr(evt, "resolution"):
     evt. resolution = 'N/A'
+
+
+

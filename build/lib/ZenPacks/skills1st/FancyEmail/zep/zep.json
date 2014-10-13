@@ -1,0 +1,20 @@
+{
+    "EventDetailItem": [
+        {
+            "key": "Category",
+            "type": "1",
+            "name": "Category"
+        },
+        {
+            "key": "Site",
+            "type": "1",
+            "name": "Site"
+        },
+        {
+            "key": "Region",
+            "type": "1",
+            "name": "Region"
+        }
+    ]
+}
+
