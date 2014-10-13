@@ -88,6 +88,6 @@ Screenshots
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/dist/ZenPacks.skills1st.FancyEmail-1.1.0-py2.7.egg?raw=True
-.. |email1| image:: http://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_error.jpg
-.. |email2| image:: http://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_clear.jpg
+.. |email1| image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_error.jpg
+.. |email2| image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_clear.jpg
 
