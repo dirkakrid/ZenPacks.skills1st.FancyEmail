@@ -81,8 +81,12 @@ Change History
 
 Screenshots
 ===========
+* Bad news email  `Bad news email`_
+* Good news email  `Good news email`_
 
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/dist/ZenPacks.skills1st.FancyEmail-1.1.0-py2.7.egg?raw=True
+.. _Bad news email: image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/raw/master/screenshots/FancyEmail_error.jpg
+.. _Good news email: image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/raw/master/screenshots/FancyEmail_clear.jpg
 
