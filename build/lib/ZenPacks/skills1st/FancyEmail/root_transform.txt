@@ -41,7 +41,7 @@ try:
 except:
     pass
 
-# Ensure that explanation and resolution fields arenot null
+# Ensure that explanation and resolution fields are not null
 # They can be the null string but must not be null
 if not hasattr(evt, "explanation"):
     evt.explanation = 'N/A'

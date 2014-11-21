@@ -65,6 +65,8 @@ class IFancyEmailActionContentInfo(IInfo):
     # Any image files are found in this directory.  The "image0" in the <br><img src="cid:image0"><br> line
     #  MUST match the "image0" in msgImage.add_header('Content-ID', '<image0>') in the executeBatch function.
     #   and the same for "image2" in the clear_body_format
+    # Note that in the following html you need to avoid linefeeds, especially in the table,
+    #  otherwise you will find lots of blank lines in the email
 
 
     body_format = schema.Text(
@@ -161,7 +163,7 @@ class FancyEmailActionContentInfo(InfoBase):
 
 class FancyEmailAction(IActionBase, TargetableAction):
     """
-    Derived class to execute an arbitrary command on a remote windows machine
+    Derived class to send html email
     when a notification is triggered.
     """
     implements(IAction)
@@ -202,7 +204,8 @@ class FancyEmailAction(IActionBase, TargetableAction):
         log.debug('Sending this subject: %s' % subject)
         log.debug('Sending this body: %s' % body)
 
-        plain_body = MIMEText(self._stripTags(body))
+        #plain_body = MIMEText(self._stripTags(body))
+        plain_body = MIMEText(self._stripTags(body), _subtype='plain', _charset='utf-8')
         email_message = plain_body
 
         if notification.content['body_content_type'] == 'html':
@@ -210,7 +213,8 @@ class FancyEmailAction(IActionBase, TargetableAction):
             email_message_alternative = MIMEMultipart('alternative')
             email_message_alternative.attach(plain_body)
 
-            html_body = MIMEText(body.replace('\n', '<br />\n'))
+            html_body = MIMEText(body.replace('\n', '<br />\n'), _subtype='html', _charset='utf-8')
+            #html_body = MIMEText(body.replace('\n', '<br />\n'))
             html_body.set_type('text/html')
             email_message_alternative.attach(html_body)
 
