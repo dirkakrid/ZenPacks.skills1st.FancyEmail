@@ -1,4 +1,5 @@
 MANIFEST.in
+README.rst
 README.txt
 setup.py
 ZenPacks/__init__.py
