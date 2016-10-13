@@ -16,15 +16,13 @@
             "id": "App_Cat_Test",
             "description": "Test of notification with trigger with custom field",
             "guid": "10510b40-fb2a-47d6-8963-81ff48ca5d1c",
-            "action": "command",
+            "action": "fancyemail",
             "enabled": true,
             "action_timeout": 60,
             "delay_seconds": 0,
             "repeat_seconds": 0,
             "send_initial_occurrence": true,
-            "send_clear": false,
-            "body_format": "echo Category field is ${evt/Category} and summary is ${evt/summary} >> /tmp/skills_zep_test",
-            "clear_body_format": "",
+            "send_clear": true,
             "subscriptions": ["3722e70f-90a4-46c3-a51a-cf53e716c9a8"]
         }
     ]

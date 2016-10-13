@@ -6,7 +6,7 @@
             "enabled": true,
             "rule": {
                 "api_version": 1,
-                "source": "(\"/App\" in evt.event_class) and (dev.production_state == 1000) and (evt.status == 0) and (\"DB\" in evt.Category)",
+                "source": "(\"/App\" in evt.event_class) and (dev.production_state == 1000) and (evt.status == 0) and (hasattr(zp_det, \"Category\") and \"DB\" in zp_det.Category)",
                 "type": 1
             }
         }

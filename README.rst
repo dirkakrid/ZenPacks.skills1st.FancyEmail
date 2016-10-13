@@ -21,6 +21,11 @@ particularly evt/sevColour, evt/sevBackgroundColour and evt/SevString.
 These fields and other non-standard event fields are generated / checked in 
 a top-level event transform supplied in root_transform.txt.  Note that these fields must
 be non-null.  They can be the null string but must not be None.
+
+root_transform.txt has a test for a custom property, cCategory.  This property is
+not shipped with the ZenPack.  It can be created from the GUI at the top-level device
+class.  Note that the default should not be None but can be the null string.  If this
+property is not created, the transform defaults evt.Category to "Unknown".
  
 Note that the fomatting of the email body and clear body have some very long lines.
 You seem to need this, otherwise you get lots of white space at the top of your email.
