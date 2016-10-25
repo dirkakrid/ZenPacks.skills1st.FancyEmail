@@ -93,7 +93,14 @@ $ZENHOME/local.  Install from $ZENHOME/local with:
 
 zenpack --link --install ZenPacks.skills1st.FancyEmail
 
-Restart zenhub, zopectl and zenactiond after installation.
+Note that on the initial installation of the ZenPack, you may see the following
+failure message:
+
+ComponentLookupError: (<InterfaceClass Products.ZenModel.interfaces.IAction>, u'fancyemail')
+
+A second installation attempt appears to fix this issue and the ZenPack installs successfully.
+
+Restart zenhub, zopectl and zenactiond after installation. For Zenoss 5, restart Zenoss.core.
 
 
 
