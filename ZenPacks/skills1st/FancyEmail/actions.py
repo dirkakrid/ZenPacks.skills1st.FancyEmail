@@ -188,9 +188,12 @@ class FancyEmailAction(IActionBase, TargetableAction):
     def setupAction(self, dmd):
         self.guidManager = GUIDManager(dmd)
 
+
     def executeBatch(self, notification, signal, targets):
         log.debug("Executing %s action for targets: %s", self.name, targets)
         self.setupAction(notification.dmd)
+        #log.debug('in executeBatch notification is %s ' % (notification))
+        #log.debug('in executeBatch notification.content is %s ' % (notification.content))
 
         data = _signalToContextDict(signal, self.options.get('zopeurl'), notification, self.guidManager)
         if signal.clear:
@@ -259,6 +262,8 @@ class FancyEmailAction(IActionBase, TargetableAction):
         email_message['From'] = email_from
         email_message['To'] = ','.join(targets)
         email_message['Date'] = formatdate(None, True)
+        #log.debug('email message is %s' % (email_message))
+        #log.debug(' host is %s, port is %s, user is %s, password is %s, useTls is %s, email from is %s ' % (host, port, user, password, useTls, email_from))
 
         result, errorMsg = sendEmail(
             email_message,
@@ -300,13 +305,14 @@ class FancyEmailAction(IActionBase, TargetableAction):
         return data
 
     def updateContent(self, content=None, data=None):
+        """
+        Use the action's interface definition to grab the content pane
+        information data and populate the content object.
+        """
         updates = dict()
-        updates['body_content_type'] = data.get('body_content_type', 'html')
-
-        properties = ['subject_format', 'body_format', 'clear_subject_format', 'clear_body_format']
-        properties.extend(['host', 'port', 'user', 'password', 'useTls', 'email_from'])
-        for k in properties:
-            updates[k] = data.get(k)
+        for k in self.actionContentInfo.names(all=True):
+            if data.get(k) is not None:
+                updates[k] = data[k]
 
         content.update(updates)
 

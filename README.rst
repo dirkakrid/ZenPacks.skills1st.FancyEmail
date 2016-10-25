@@ -43,11 +43,30 @@ When testing, if you have changed actions.py, remember to bounce zenhub, zopectl
 zenwebserver for Zenoss Enterprise) and zenactiond.  You must also create a new 
 notification of type FancyEmail - an existing one will still have the old html.
 
+This ZenPack has now been tested with Zenoss 5.1.7 where bugs related to shipping both
+triggers and notifications have been resolved.  The single trigger includes a Zenpack-shipped
+event field.  Three notifications are included:
+
+    * App_Cat_Test_command      disabled by default. Logs to /tmp/skills_zep_test.  Note that, in
+       Zenoss 5.x, this file will exist only in the zenactiond container.
+    * App_Cat_Test_email        disabled by default.  Sends a standard email with default
+       email body and clear body
+    * App_Cat_Test_fancyemail   enabled by default.  Sends a fancyemail with the default
+       fancyemail html body and clear body
+
+Both email notifications should automatically fill in default email fields such as SMTP host,
+useTLS, etc if they are not supplied directly.  This is dependent on having the fix described
+in https://jira.zenoss.com/browse/ZEN-15367.
+
+Note that subscribers to both email notifications must be configured locally after installing
+the ZenPack.
+
+
 
 Requirements & Dependencies
 ===========================
 
-    * Zenoss Versions Supported: 4.x
+    * Zenoss Versions Supported: 4.x, 5.x
     * External Dependencies: 
     * ZenPack Dependencies:
     * Installation Notes: Restart zenhub, zopectl and zenactiond after installation
@@ -60,6 +79,7 @@ Download the appropriate package for your Zenoss version from the list
 below.
 
 * Zenoss 4.0+ `Latest Package for Python 2.7`_
+* Zenoss 5.0+ `Latest Package for Zenoss 5 Python 2.7`_
 
 ZenPack installation
 ======================
@@ -93,6 +113,7 @@ Screenshots
 .. External References Below. Nothing Below This Line Should Be Rendered
 
 .. _Latest Package for Python 2.7: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/dist/ZenPacks.skills1st.FancyEmail-1.1.0-py2.7.egg?raw=True
+.. _Latest Package for Zenoss 5 Python 2.7: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/5.1/dist/ZenPacks.skills1st.FancyEmail-1.2.0-py2.7.egg?raw=True
 .. |email1| image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_error.jpg
 .. |email2| image:: https://github.com/jcurry/ZenPacks.skills1st.FancyEmail/blob/master/screenshots/FancyEmail_clear.jpg
 

@@ -40,5 +40,4 @@ ZenPacks/skills1st/FancyEmail/browser/resources/js/ExampleDevice.js
 ZenPacks/skills1st/FancyEmail/objects/objects.xml
 ZenPacks/skills1st/FancyEmail/zep/README_zep_json
 ZenPacks/skills1st/FancyEmail/zep/actions.json
-ZenPacks/skills1st/FancyEmail/zep/actions.json_20161010
 ZenPacks/skills1st/FancyEmail/zep/zep.json

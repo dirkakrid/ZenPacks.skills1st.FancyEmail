@@ -6,18 +6,18 @@
             "enabled": true,
             "rule": {
                 "api_version": 1,
-                "source": "(\"/App\" in evt.event_class) and (\"DB\" in evt.Category) and (dev.production_state == 1000) and (evt.status == 0)",
+                "source": "(\"/App\" in evt.event_class) and (dev.production_state == 1000) and (evt.status == 0) and (hasattr(zp_det, \"Category\") and \"DB\" in zp_det.Category)",
                 "type": 1
             }
         }
     ],
     "notifications": [
         {
-            "id": "App_Cat_Test",
+            "id": "App_Cat_Test_command",
             "description": "Test of notification with trigger with custom field",
             "guid": "10510b40-fb2a-47d6-8963-81ff48ca5d1c",
             "action": "command",
-            "enabled": true,
+            "enabled": false,
             "action_timeout": 60,
             "delay_seconds": 0,
             "repeat_seconds": 0,
@@ -25,6 +25,32 @@
             "send_clear": false,
             "body_format": "echo Category field is ${evt/Category} and summary is ${evt/summary} >> /tmp/skills_zep_test",
             "clear_body_format": "",
+            "subscriptions": ["3722e70f-90a4-46c3-a51a-cf53e716c9a8"]
+        },
+        {
+            "id": "App_Cat_Test_email",
+            "description": "Test of notification with trigger with custom field",
+            "guid": "cc025802-d2c1-4e10-8b19-de877dd6e5c8",
+            "action": "email",
+            "enabled": false,
+            "action_timeout": 60,
+            "delay_seconds": 0,
+            "repeat_seconds": 0,
+            "send_initial_occurrence": true,
+            "send_clear": false,
+            "subscriptions": ["3722e70f-90a4-46c3-a51a-cf53e716c9a8"]
+        },
+        {
+            "id": "App_Cat_Test_fancyemail",
+            "description": "Test of notification with trigger with custom field",
+            "guid": "f6ffe8f3-4cf1-4fcc-95a6-027dc7ad0044",
+            "action": "fancyemail",
+            "enabled": true,
+            "action_timeout": 60,
+            "delay_seconds": 0,
+            "repeat_seconds": 0,
+            "send_initial_occurrence": true,
+            "send_clear": true,
             "subscriptions": ["3722e70f-90a4-46c3-a51a-cf53e716c9a8"]
         }
     ]
