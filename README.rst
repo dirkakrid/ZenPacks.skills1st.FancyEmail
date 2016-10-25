@@ -103,6 +103,8 @@ Change History
    * Initial Release
 * 1.1.0
    * Better table formatting and images.  zep file included for 3 event fields
+* 1.2.0
+   * Updated for Zenoss 5 with trigger and notification bugs fixed
 
 Screenshots
 ===========
